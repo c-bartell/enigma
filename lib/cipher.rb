@@ -46,4 +46,11 @@ class Cipher
   def format(message)
     message.downcase.chomp.split('')
   end
+
+  def shift_at_index(index)
+    return a_shift if ((index + 1) % 4) == 1
+    return b_shift if ((index + 1) % 4) == 2
+    return c_shift if ((index + 1) % 4) == 3
+    return d_shift if ((index + 1) % 4) == 0
+  end
 end
