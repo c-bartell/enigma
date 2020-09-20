@@ -1,7 +1,8 @@
 class Cipher
-  attr_reader :a_shift, :b_shift, :c_shift, :d_shift
+  attr_reader :a_shift, :b_shift, :c_shift, :d_shift, :encryptor
 
-  def initialize
+  def initialize(encryptor)
+    @encryptor = encryptor
     @a_shift = nil
     @b_shift = nil
     @c_shift = nil
