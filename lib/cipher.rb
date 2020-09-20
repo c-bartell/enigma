@@ -54,6 +54,12 @@ class Cipher
     return d_shift if ((index + 1) % 4) == 0
   end
 
+  def encrypterate(message)
+    message.each_with_index.map do |letter, index|
+      encrypt_letter(letter, shift_at_index(index))
+    end
+  end
+
   def encrypt(message, key_date_data)
     update_shifts(key_date_data)
     encrypted = message.each_with_index.map do |letter, index|
