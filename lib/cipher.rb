@@ -43,10 +43,6 @@ class Cipher
     shifted_characters(shift)[characters.index(letter)]
   end
 
-  def format(message) # maybe better in Encryptor? Pass in formatted array and pass out formatter array? Move into Encryptor.
-    message.downcase.chomp.split('')
-  end
-
   def shift_at_index(index)
     return a_shift if ((index + 1) % 4) == 1
     return b_shift if ((index + 1) % 4) == 2

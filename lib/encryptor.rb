@@ -17,4 +17,8 @@ class Encryptor
   def generate_cipher
     Cipher.new(self)
   end
+
+  def format(message)
+    message.downcase.chomp.split('')
+  end
 end

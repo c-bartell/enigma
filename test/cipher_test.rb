@@ -76,13 +76,6 @@ class CipherTest < Minitest::Test
     assert_equal 'h', @cipher.encrypt_letter('z', 36)
   end
 
-  def test_it_can_format_message_string
-    message = "HeLLo WOrlD\n"
-    expected = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
-
-    assert_equal expected, @cipher.format(message)
-  end
-
   def test_it_can_choose_the_correct_shift
     shifts = { A: 5, B: 12, C: 14, D: 74 }
     @cipher.set_shifts(shifts)
