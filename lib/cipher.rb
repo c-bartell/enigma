@@ -7,14 +7,17 @@ class Cipher
     @c_shift = nil
     @d_shift = nil
   end
-  #
-  # def set_shift(value)
-  #   @shift = value
-  # end
-  #
-  # def characters
-  #   ('a'..'z').to_a << ' '
-  # end
+
+  def set_shifts(shifts)
+    @a_shift = shifts[:A]
+    @b_shift = shifts[:B]
+    @c_shift = shifts[:C]
+    @d_shift = shifts[:D]
+  end
+
+  def characters
+    ('a'..'z').to_a << ' '
+  end
   #
   # def shifted_characters
   #   characters.rotate(shift)
