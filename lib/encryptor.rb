@@ -21,4 +21,8 @@ class Encryptor
   def format(message)
     message.downcase.chomp.split('')
   end
+
+  def request_shifts(key_date_data)
+    shift_generator.generate_shifts(key_date_data)
+  end
 end
