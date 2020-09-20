@@ -5,6 +5,10 @@ class Cipher
     @shift = shift
   end
 
+  def set_shift(value)
+    @shift = value
+  end
+
   def characters
     ('a'..'z').to_a << ' '
   end
