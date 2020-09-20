@@ -1,9 +1,12 @@
 class Cipher
-  # attr_reader :shift
-  #
-  # def initialize(shift)
-  #   @shift = shift
-  # end
+  attr_reader :a_shift, :b_shift, :c_shift, :d_shift
+
+  def initialize
+    @a_shift = nil
+    @b_shift = nil
+    @c_shift = nil
+    @d_shift = nil
+  end
   #
   # def set_shift(value)
   #   @shift = value
