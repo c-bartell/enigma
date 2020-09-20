@@ -43,7 +43,7 @@ class Cipher
     shifted_characters(shift)[characters.index(letter)]
   end
 
-  def format(message)
+  def format(message) # maybe better in Encryptor? Pass in formatted array and pass out formatter array? Move into Encryptor.
     message.downcase.chomp.split('')
   end
 
