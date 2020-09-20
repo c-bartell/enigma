@@ -55,7 +55,7 @@ class EncryptorTest < Minitest::Test
     Cipher.stubs(:new).returns(cipher)
     encryptor = Encryptor.new(enigma)
     shifts = { A: 3, B: 27, C: 73, D: 20 }
-    shift_generator.stubs(:generate_shifts).returns(shifts)
+    enigma.stubs(:request_shifts).returns(shifts)
 
     assert_equal shifts, encryptor.request_shifts(['Key date data'])
   end
