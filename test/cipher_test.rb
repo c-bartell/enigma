@@ -21,14 +21,14 @@ class CipherTest < Minitest::Test
 
     assert_equal expected, @cipher.characters
   end
-  #
-  # def test_it_can_generate_shifted_character_set
-  #   expected = ['d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-  #     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ', 'a', 'b', 'c']
-  #
-  #   assert_equal expected, @cipher.shifted_characters
-  # end
-  #
+
+  def test_it_can_generate_shifted_character_set
+    expected = ['d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+      'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ', 'a', 'b', 'c']
+
+    assert_equal expected, @cipher.shifted_characters(3)
+  end
+
   # def test_it_can_encrypt_a_letter
   #   assert_equal 'd', @cipher.encrypt('a')
   #   assert_equal 'b', @cipher.encrypt('z')
