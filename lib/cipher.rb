@@ -42,4 +42,8 @@ class Cipher
   def encrypt_letter(letter, shift)
     shifted_characters(shift)[characters.index(letter)]
   end
+
+  def format(message)
+    message.downcase.chomp.split('')
+  end
 end
