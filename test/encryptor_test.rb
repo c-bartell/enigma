@@ -1,7 +1,7 @@
 require './test/test_helper'
 require './lib/encryptor'
 
-class EncryptorTest < Minitest::Test  
+class EncryptorTest < Minitest::Test
   def test_it_has_attributes
     enigma = mock('Enigma object')
     shift_generator = mock('ShiftGenerator object')
@@ -15,5 +15,15 @@ class EncryptorTest < Minitest::Test
     assert_equal cipher, encryptor.cipher
   end
 
+  def test_it_can_generate_a_shift_generator
+    skip
+    enigma = mock('Enigma object')
+    shift_generator = mock('ShiftGenerator object')
+    cipher = mock('Cipher object')
+    ShiftGenerator.stubs(:new).returns(shift_generator)
+    Cipher.stubs(:new).returns(cipher)
+    encryptor = Encryptor.new(enigma)
 
+    assert_instance_of ShiftGenerator, encryptor.shift_generator
+  end
 end
