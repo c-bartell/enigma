@@ -33,4 +33,17 @@ class EncryptorTest < Minitest::Test
 
     assert_instance_of Cipher, encryptor.cipher
   end
+
+  def test_it_can_format_message_string
+    enigma = mock('Enigma object')
+    shift_generator = mock('ShiftGenerator object')
+    cipher = mock('Cipher object')
+    ShiftGenerator.stubs(:new).returns(shift_generator)
+    Cipher.stubs(:new).returns(cipher)
+    encryptor = Encryptor.new(enigma)
+    message = "HeLLo WOrlD\n"
+    expected = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+
+    assert_equal expected, encryptor.format(message)
+  end
 end
