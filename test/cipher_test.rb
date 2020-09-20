@@ -83,6 +83,16 @@ class CipherTest < Minitest::Test
     assert_equal expected, @cipher.format(message)
   end
 
+  def test_it_can_choose_the_correct_shift
+    shifts = { A: 5, B: 12, C: 14, D: 74 }
+    @cipher.set_shifts(shifts)
+
+    assert_equal 5, cipher.shift_at_index(0)
+    assert_equal 74, cipher.shift_at_index(99)
+    assert_equal 12, cipher.shift_at_index(12345)
+    assert_equal 14, cipher.shift_at_index(666)
+  end
+
   # def test_it_can_encrypt_a_message
   #
   # end
