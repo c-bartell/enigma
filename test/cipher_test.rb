@@ -1,14 +1,15 @@
 require './test/test_helper'
 require './lib/cipher'
+require 'mocha/minitest'
 
 class CipherTest < Minitest::Test
   def setup
-    @cipher = Cipher.new
+    @encryptor = mock('Encryptor Object')
+    @cipher = Cipher.new(@encryptor)
   end
 
   def test_it_has_attributes
-    @cipher = Cipher.new
-
+    assert_equal @encryptor, @cipher.encryptor
     assert_nil @cipher.a_shift
     assert_nil @cipher.b_shift
     assert_nil @cipher.c_shift
@@ -45,4 +46,6 @@ class CipherTest < Minitest::Test
     assert_equal 14, @cipher.c_shift
     assert_equal 74, @cipher.d_shift
   end
+
+  # def test_it_can_encrypt_a_message
 end
