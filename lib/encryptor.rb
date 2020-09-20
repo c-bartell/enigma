@@ -17,7 +17,7 @@ class Encryptor
     message.downcase.chomp.split('')
   end
 
-  def request_shifts(key_date_data)
+  def request_shifts(key_date_data) # key_date_data comes in as [key_string, date_string]
     enigma.request_shifts(key_date_data)
   end
 end
