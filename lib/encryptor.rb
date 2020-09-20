@@ -23,6 +23,6 @@ class Encryptor
   end
 
   def request_shifts(key_date_data)
-    shift_generator.generate_shifts(key_date_data)
+    enigma.request_shifts(key_date_data)
   end
 end
