@@ -2,17 +2,17 @@ require './test/test_helper'
 require './lib/cipher'
 
 class CipherTest < Minitest::Test
-  # def setup
-  #   @cipher = Cipher.new(3)
-  # end
+  def setup
+    @cipher = Cipher.new
+  end
   #
   def test_it_has_attributes
-    cipher = Cipher.new
+    @cipher = Cipher.new
 
-    assert_nil cipher.a_shift
-    assert_nil cipher.b_shift
-    assert_nil cipher.c_shift
-    assert_nil cipher.d_shift
+    assert_nil @cipher.a_shift
+    assert_nil @cipher.b_shift
+    assert_nil @cipher.c_shift
+    assert_nil @cipher.d_shift
   end
   #
   # def test_it_can_generate_character_set
