@@ -12,7 +12,13 @@ class CipherTest < Minitest::Test
 
   def test_it_can_generate_character_set
     expected = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-       'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ']
+      'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ']
     assert_equal expected, @cipher.characters
+  end
+
+  def test_it_can_generate_shifted_character_set
+    expected = ['d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+      'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ', 'a', 'b', 'c']
+    assert_equal expected, @cipher.shifted_characters
   end
 end
