@@ -12,4 +12,8 @@ class Cipher
   def shifted_characters
     characters.rotate(shift)
   end
+
+  def encrypt(letter)
+    shifted_characters[characters.index(letter)]
+  end
 end
