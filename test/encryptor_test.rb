@@ -41,11 +41,20 @@ class EncryptorTest < Minitest::Test
     assert_equal shifts, encryptor.request_shifts(['Key date data'])
   end
 
-  # def test_it_can_package_results
-  #
-  # end
+  def test_it_can_package_results
+    enigma = mock('Enigma object')
+    cipher = mock('Cipher object')
+    Cipher.stubs(:new).returns(cipher)
+    encryptor = Encryptor.new(enigma)
+    encrypted = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
+    key_date = ['02715', '040895']
+    expected = { encryption: 'keder ohulw', key: '02715', date: '040895' }
+
+    assert_equal expected, encryptor.package(encrypted, key_date)
+  end
 
   def test_it_can_encrypt_a_message
+    skip
     enigma = mock('Enigma object')
     cipher = mock('Cipher object')
     Cipher.stubs(:new).returns(cipher)
@@ -55,6 +64,7 @@ class EncryptorTest < Minitest::Test
     cipher.stubs(:encrypt).returns(encrypted)
     encryptor.stubs(:format).returns(message)
 
-    assert_equal 'keder ohulw', encryptor.encrypt("HeLLo WOrlD\n", ['02715', '040895'])
+    assert_equal 'keder ohulw', encryptor.encrypt("HeLLo WOrlD\n", ['02715',
+      '040895'])
   end
 end
