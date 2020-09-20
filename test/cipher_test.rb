@@ -6,9 +6,14 @@ class CipherTest < Minitest::Test
   #   @cipher = Cipher.new(3)
   # end
   #
-  # def test_it_has_attributes
-  #   assert_equal 3, @cipher.shift
-  # end
+  def test_it_has_attributes
+    cipher = Cipher.new
+
+    assert_nil cipher.a_shift
+    assert_nil cipher.b_shift
+    assert_nil cipher.c_shift
+    assert_nil cipher.d_shift
+  end
   #
   # def test_it_can_generate_character_set
   #   expected = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
