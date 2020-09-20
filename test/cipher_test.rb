@@ -38,12 +38,14 @@ class CipherTest < Minitest::Test
   #   assert_equal 'j', cipher2.encrypt('a')
   #   assert_equal 'h', cipher2.encrypt('z')
   # end
-  #
-  # def test_it_can_set_a_new_shift_value
-  #   assert_equal 3, @cipher.shift
-  #
-  #   @cipher.set_shift(100)
-  #
-  #   assert_equal 100, @cipher.shift
-  # end
+
+  def test_it_can_set_new_shift_values
+    shifts = { A: 5, B: 12, C: 14, D: 74 }
+    @cipher.set_shifts(shifts)
+
+    assert_equal 5, @cipher.a_shift
+    assert_equal 12, @cipher.b_shift
+    assert_equal 14, @cipher.c_shift
+    assert_equal 74, @cipher.d_shift
+  end
 end
