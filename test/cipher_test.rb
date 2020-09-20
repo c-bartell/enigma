@@ -37,11 +37,22 @@ class CipherTest < Minitest::Test
     shifts = { A: 5, B: 12, C: 14, D: 74 }
     @encryptor.stubs(:request_shifts).returns(shifts)
     @cipher.update_shifts(['nothing or key and or date'])
-    
+
     assert_equal 5, @cipher.a_shift
     assert_equal 12, @cipher.b_shift
     assert_equal 14, @cipher.c_shift
     assert_equal 74, @cipher.d_shift
+  end
+
+  def test_it_can_clear_shifts
+    shifts = { A: 5, B: 12, C: 14, D: 74 }
+    @cipher.set_shifts(shifts)
+    @cipher.clear_shifts
+    
+    assert_nil @cipher.a_shift
+    assert_nil @cipher.b_shift
+    assert_nil @cipher.c_shift
+    assert_nil @cipher.d_shift
   end
 
   def test_it_can_generate_character_set
