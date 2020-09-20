@@ -5,7 +5,7 @@ class CipherTest < Minitest::Test
   def setup
     @cipher = Cipher.new
   end
-  #
+
   def test_it_has_attributes
     @cipher = Cipher.new
 
@@ -29,15 +29,12 @@ class CipherTest < Minitest::Test
     assert_equal expected, @cipher.shifted_characters(3)
   end
 
-  # def test_it_can_encrypt_a_letter
-  #   assert_equal 'd', @cipher.encrypt('a')
-  #   assert_equal 'b', @cipher.encrypt('z')
-  #
-  #   cipher2 = Cipher.new(36)
-  #
-  #   assert_equal 'j', cipher2.encrypt('a')
-  #   assert_equal 'h', cipher2.encrypt('z')
-  # end
+  def test_it_can_encrypt_a_letter
+    assert_equal 'd', @cipher.encrypt_letter('a', 3)
+    assert_equal 'b', @cipher.encrypt_letter('z', 3)
+    assert_equal 'j', @cipher.encrypt_letter('a', 36)
+    assert_equal 'h', @cipher.encrypt_letter('z', 36)
+  end
 
   def test_it_can_set_new_shift_values
     shifts = { A: 5, B: 12, C: 14, D: 74 }
