@@ -24,6 +24,13 @@ class Cipher
     set_shifts(request_shifts(key_date_data))
   end
 
+  def clear_shifts
+    @a_shift = nil
+    @b_shift = nil
+    @c_shift = nil
+    @d_shift = nil
+  end
+
   def characters
     ('a'..'z').to_a << ' '
   end
