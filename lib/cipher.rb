@@ -8,4 +8,8 @@ class Cipher
   def characters
     ('a'..'z').to_a << ' '
   end
+
+  def shifted_characters
+    characters.rotate(shift)
+  end
 end
