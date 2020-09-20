@@ -20,6 +20,10 @@ class Cipher
     @d_shift = shifts[:D]
   end
 
+  def update_shifts(key_date_data)
+    set_shifts(request_shifts(key_date_data))
+  end
+
   def characters
     ('a'..'z').to_a << ' '
   end
