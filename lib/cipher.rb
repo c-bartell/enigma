@@ -18,10 +18,10 @@ class Cipher
   def characters
     ('a'..'z').to_a << ' '
   end
-  #
-  # def shifted_characters
-  #   characters.rotate(shift)
-  # end
+
+  def shifted_characters(shift)
+    characters.rotate(shift)
+  end
   #
   # def encrypt(letter)
   #   shifted_characters[characters.index(letter)]
