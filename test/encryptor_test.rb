@@ -46,4 +46,17 @@ class EncryptorTest < Minitest::Test
 
     assert_equal expected, encryptor.format(message)
   end
+
+  def test_it_can_request_shifts
+    enigma = mock('Enigma object')
+    shift_generator = mock('ShiftGenerator object')
+    cipher = mock('Cipher object')
+    ShiftGenerator.stubs(:new).returns(shift_generator)
+    Cipher.stubs(:new).returns(cipher)
+    encryptor = Encryptor.new(enigma)
+    shifts = { A: 3, B: 27, C: 73, D: 20 }
+    shift_generator.stubs(:generate_shifts).returns(shifts)
+
+    assert_equal shifts, encryptor.request_shifts(['Key date data'])
+  end
 end
