@@ -51,7 +51,7 @@ class CipherTest < Minitest::Test
     shifts = { A: 5, B: 12, C: 14, D: 74 }
     @encryptor.stubs(:request_shifts).returns(shifts)
 
-    assert_equal shifts, @cipher.request_shifts
+    assert_equal shifts, @cipher.request_shifts(['nothing or key and or date'])
   end
   # def test_it_can_encrypt_a_message
   #

@@ -9,6 +9,10 @@ class Cipher
     @d_shift = nil
   end
 
+  def request_shifts(key_date_data)
+    encryptor.request_shifts(key_date_data)
+  end
+
   def set_shifts(shifts)
     @a_shift = shifts[:A]
     @b_shift = shifts[:B]
