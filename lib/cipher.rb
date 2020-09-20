@@ -53,4 +53,14 @@ class Cipher
     return c_shift if ((index + 1) % 4) == 3
     return d_shift if ((index + 1) % 4) == 0
   end
+
+  def encrypt(message, key_date_data)
+    update_shifts(key_date_data)
+    encrypted = message.each_with_index.map do |letter, index|
+      encrypt_letter(letter, shift_at_index(index))
+    end
+    clear_shifts
+
+    encrypted
+  end
 end
