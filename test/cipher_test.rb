@@ -95,10 +95,14 @@ class CipherTest < Minitest::Test
 
   def test_it_can_encrypt_a_message
     shifts = { A: 3, B: 27, C: 73, D: 20 }
-    @cipher.set_shifts(shifts)
+    @encryptor.stubs(:request_shifts).returns(shifts)
     message = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
     expected = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
 
-    assert_equal expected, @cipher.encrypt(message)
+    assert_equal expected, @cipher.encrypt(message, [])
+    assert_nil @cipher.a_shift
+    assert_nil @cipher.b_shift
+    assert_nil @cipher.c_shift
+    assert_nil @cipher.d_shift
   end
 end
