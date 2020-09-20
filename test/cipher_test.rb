@@ -21,4 +21,12 @@ class CipherTest < Minitest::Test
       'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ', 'a', 'b', 'c']
     assert_equal expected, @cipher.shifted_characters
   end
+
+  def test_it_can_encrypt_a_letter
+    assert_equal 'd', @cipher.encrypt('a')
+    assert_equal 'b', @cipher.encrypt('z')
+    cipher2 = Cipher.new(36)
+    assert_equal 'j', cipher2.encrypt('a')
+    assert_equal 'h', cipher2.encrypt('z')
+  end
 end
