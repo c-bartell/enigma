@@ -8,6 +8,7 @@ class CipherTest < Minitest::Test
   end
 
   def test_it_can_generate_character_set
+    cipher = Cipher.new(3)
     expected = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ']
     assert_equal expected, cipher.characters
