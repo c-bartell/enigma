@@ -93,9 +93,14 @@ class CipherTest < Minitest::Test
     assert_equal 14, @cipher.shift_at_index(666)
   end
 
-  # def test_it_can_encrypterate_over_a_message_array
-  #
-  # end
+  def test_it_can_encrypterate_over_a_message_array
+    shifts = { A: 3, B: 27, C: 73, D: 20 }
+    @cipher.set_shifts(shifts)
+    message = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+    expected = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
+
+    assert_equal expected, @cipher.encrypterate(message)
+  end
 
   def test_it_can_encrypt_a_message_and_reset
     shifts = { A: 3, B: 27, C: 73, D: 20 }
