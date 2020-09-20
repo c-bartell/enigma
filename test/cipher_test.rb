@@ -47,5 +47,13 @@ class CipherTest < Minitest::Test
     assert_equal 74, @cipher.d_shift
   end
 
+  def test_it_can_request_shifts
+    shifts = { A: 5, B: 12, C: 14, D: 74 }
+    @encryptor.stubs(:request_shifts).returns(shifts)
+
+    assert_equal shifts, @cipher.request_shifts
+  end
   # def test_it_can_encrypt_a_message
+  #
+  # end
 end
