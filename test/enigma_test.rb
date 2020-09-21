@@ -35,4 +35,14 @@ class EnigmaTest < Minitest::Test
 
       assert_equal shifts, enigma.request_shifts(['02715', '040895'])
   end
+
+  def test_it_can_encrypt_a_message
+    enigma = Enigma.new
+    key = '02715'
+    date = '040895'
+    message = 'Hello World'
+    expected = { encryption: 'keder ohulw', key: '02715', date: '040895' }
+
+    assert_equal expected, enigma.encrypt(message, key, date)
+  end
 end
