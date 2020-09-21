@@ -14,9 +14,9 @@ class ShiftGeneratorTest < Minitest::Test
     shift_generator = ShiftGenerator.new(enigma)
 
     assert_equal 11, shift_generator.combi_length(['02715', '040895'])
-    assert_equal 6, shift_generator.combi_length(['02715', '040895'])
-    assert_equal 5, shift_generator.combi_length(['02715', '040895'])
-    assert_equal 0, shift_generator.combi_length(['02715', '040895'])
+    assert_equal 6, shift_generator.combi_length(['040895'])
+    assert_equal 5, shift_generator.combi_length(['02715'])
+    assert_equal 0, shift_generator.combi_length([])
   end
 
   # def test_it_can_evaluate_incoming_key_date_data
