@@ -29,11 +29,17 @@ class ShiftGeneratorTest < Minitest::Test
     assert_equal '12715', shift_generator.pad('12715', 5)
   end
 
-  # def test_it_can_generate_key
-  #   enigma = mock('Enigma object')
-  #   shift_generator = ShiftGenerator.new(enigma)
-  #
-  # end
+  def test_it_can_generate_key
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+    shift_generator.stubs(:rand).returns(27150)
+
+    assert_equal '27150', shift_generator.generate_key
+
+    shift_generator.stubs(:rand).returns(2715)
+
+    assert_equal '02715', shift_generator.generate_key
+  end
 
   # def test_it_can_evaluate_incoming_key_date_data
   #   skip
