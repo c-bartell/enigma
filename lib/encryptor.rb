@@ -28,4 +28,8 @@ class Encryptor
       encryption: encrypted.join
     }
   end
+
+  def encrypt(message, key_date_data)
+    package(cipher.encrypt(format(message)), key_date_data)
+  end
 end

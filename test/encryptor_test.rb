@@ -54,7 +54,6 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_encrypt_a_message
-    skip
     enigma = mock('Enigma object')
     cipher = mock('Cipher object')
     Cipher.stubs(:new).returns(cipher)
@@ -63,8 +62,9 @@ class EncryptorTest < Minitest::Test
     encrypted = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
     cipher.stubs(:encrypt).returns(encrypted)
     encryptor.stubs(:format).returns(message)
+    expected = { encryption: 'keder ohulw', key: '02715', date: '040895' }
 
-    assert_equal 'keder ohulw', encryptor.encrypt("HeLLo WOrlD\n", ['02715',
+    assert_equal expected, encryptor.encrypt("HeLLo WOrlD\n", ['02715',
       '040895'])
   end
 end
