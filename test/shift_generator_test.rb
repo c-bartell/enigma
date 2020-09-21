@@ -109,6 +109,6 @@ class ShiftGeneratorTest < Minitest::Test
     shift_generator.stubs(:offsets).returns({ A: 1, B: 0, C: 2, D: 5 })
     expected = { A: 3, B: 27, C: 73, D: 20 }
 
-    assert_equal expected, shift_generator.total_shifts(['02715', '040895'])
+    assert_equal expected, shift_generator.total_shifts('02715', '040895')
   end
 end
