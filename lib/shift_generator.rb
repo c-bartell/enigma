@@ -34,4 +34,13 @@ class ShiftGenerator
       [generate_key, generate_date]
     end
   end
+
+  def frameshift(key) # Refactor with each_with_index.map
+    shifts = []
+    4.times do |index|
+      shifts << key[index, 2]
+    end
+
+    shifts
+  end
 end
