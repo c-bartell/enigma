@@ -65,4 +65,11 @@ class ShiftGenerator
       D: process(date)[3].to_i
     }
   end
+
+  def total_shifts(key, date)
+    offsets(date).reduce(key_to_shifts(key)) do |shifts, (letter, offset)|
+      shifts[letter] += offset
+      shifts
+    end
+  end
 end
