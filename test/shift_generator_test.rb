@@ -111,4 +111,14 @@ class ShiftGeneratorTest < Minitest::Test
 
     assert_equal expected, shift_generator.total_shifts('02715', '040895')
   end
+
+  def test_it_can_convert_key_date_data_to_shifts
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+    shift_generator.stubs(:total_shifts).returns({ A: 3, B: 27, C: 73, D: 20 })
+    expected = { A: 3, B: 27, C: 73, D: 20 }
+
+    assert_equal expected, shift_generator.convert_to_shifts(['02715',
+      '040895'])
+  end
 end
