@@ -68,4 +68,12 @@ class ShiftGeneratorTest < Minitest::Test
     assert_equal expected, shift_generator.key_date(['02715'])
     assert_equal expected, shift_generator.key_date([])
   end
+
+  def test_it_can_frameshift_key
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+
+    assert_equal ['02', '27', '71', '15'], shift_generator.frameshift('02715')
+    assert_equal ['12', '23', '34', '45'], shift_generator.frameshift('12345')
+  end
 end
