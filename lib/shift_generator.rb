@@ -43,4 +43,13 @@ class ShiftGenerator
 
     shifts
   end
+
+  def key_to_shifts(key)
+    {
+      A: frameshift(key)[0].to_i,
+      B: frameshift(key)[1].to_i,
+      C: frameshift(key)[2].to_i,
+      D: frameshift(key)[3].to_i
+    }
+  end
 end
