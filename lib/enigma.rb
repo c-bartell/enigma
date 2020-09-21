@@ -12,4 +12,8 @@ class Enigma
   def key_date(key_date_data)
     shift_generator.key_date(key_date_data)
   end
+
+  def request_shifts(key_date_data)
+    shift_generator.convert_to_shifts(key_date_data)
+  end
 end
