@@ -1,6 +1,5 @@
 require './test/test_helper'
 require './lib/cipher'
-require 'mocha/minitest'
 
 class CipherTest < Minitest::Test
   def setup
