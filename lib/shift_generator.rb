@@ -19,6 +19,10 @@ class ShiftGenerator
     pad(rand(100_000).to_s, 5)
   end
 
+  def generate_date
+    Date.today.strftime("%d%m%y")
+  end
+
   def key_date(key_date_data)
     # combined string length: 11, 6, 5, or 0
     #   11 means all good, return key_date_data
