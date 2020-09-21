@@ -72,4 +72,8 @@ class ShiftGenerator
       shifts
     end
   end
+
+  def convert_to_shifts(key_date_data)
+    total_shifts(key_date_data.first, key_date_data.last)
+  end
 end
