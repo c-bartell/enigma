@@ -7,6 +7,6 @@ class EnigmaTest < Minitest::Test
     Encryptor.stubs(:new).returns(encryptor)
     enigma = Enigma.new
 
-    assert_equal
+    assert_equal encryptor, enigma.encryptor
   end
 end
