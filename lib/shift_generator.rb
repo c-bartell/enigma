@@ -23,14 +23,15 @@ class ShiftGenerator
     Date.today.strftime("%d%m%y")
   end
 
-  def key_date(key_date_data)
-    # combined string length: 11, 6, 5, or 0
-    #   11 means all good, return key_date_data
-    #   Not 11 means correct the data
-    # return key_date_data if key_date_data.length == 2
-    # if key_date_data.first.length == 6
-    #   #generate key and add to beginning
-    # elsif key_date_data
-    # require 'pry' ; binding.pry
+  def key_date(key_date_data) # Could break into helpers that call e/o in first line guard clauses if length not correct
+    if combi_length(key_date_data) == 11
+      key_date_data
+    elsif combi_length(key_date_data) == 6
+      key_date_data.unshift(generate_key)
+    elsif combi_length(key_date_data) == 5
+      key_date_data.push(generate_date)
+    else
+      [generate_key, generate_date]
+    end
   end
 end
