@@ -16,4 +16,8 @@ class Enigma
   def request_shifts(key_date_data)
     shift_generator.convert_to_shifts(key_date_data)
   end
+
+  def encrypt(message, *key_date_data)
+    encryptor.encrypt(message, key_date(key_date_data))
+  end
 end

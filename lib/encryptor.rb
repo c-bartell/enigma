@@ -26,6 +26,6 @@ class Encryptor
   end
 
   def encrypt(message, key_date_data) # Break out cipher.encrypt(format(message))
-    package(cipher.encrypt(format(message)), key_date_data)
+    package(cipher.encrypt(format(message), key_date_data), key_date_data)
   end
 end
