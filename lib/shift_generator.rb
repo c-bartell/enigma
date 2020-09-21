@@ -11,6 +11,10 @@ class ShiftGenerator
     end
   end
 
+  def pad(string, width)
+    string.rjust(width, '0')
+  end
+
   def key_date(key_date_data)
     # combined string length: 11, 6, 5, or 0
     #   11 means all good, return key_date_data
