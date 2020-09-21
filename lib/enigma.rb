@@ -8,4 +8,8 @@ class Enigma
     @encryptor = Encryptor.new(self)
     @shift_generator = ShiftGenerator.new(self)
   end
+
+  def key_date(key_date_data)
+    shift_generator.key_date(key_date_data)
+  end
 end
