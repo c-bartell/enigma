@@ -12,13 +12,6 @@ class EncryptorTest < Minitest::Test
     assert_equal cipher, encryptor.cipher
   end
 
-  def test_it_can_generate_a_cipher
-    enigma = mock('Enigma object')
-    encryptor = Encryptor.new(enigma)
-
-    assert_instance_of Cipher, encryptor.cipher
-  end
-
   def test_it_can_format_message_string
     enigma = mock('Enigma object')
     cipher = mock('Cipher object')

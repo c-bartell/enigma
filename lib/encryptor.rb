@@ -6,11 +6,7 @@ class Encryptor
 
   def initialize(enigma)
     @enigma = enigma
-    @cipher = generate_cipher
-  end
-
-  def generate_cipher
-    Cipher.new(self)
+    @cipher = Cipher.new(self)
   end
 
   def format(message)
