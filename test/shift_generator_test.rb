@@ -86,6 +86,13 @@ class ShiftGeneratorTest < Minitest::Test
     assert_equal expected, shift_generator.key_to_shifts('02715')
   end
 
+  def test_it_can_process_date
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+
+    assert_equal '1025', shift_generator.process('040895')
+  end
+
   def test_it_can_convert_date_to_offsets
     enigma = mock('Enigma object')
     shift_generator = ShiftGenerator.new(enigma)
