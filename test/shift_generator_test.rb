@@ -76,4 +76,13 @@ class ShiftGeneratorTest < Minitest::Test
     assert_equal ['02', '27', '71', '15'], shift_generator.frameshift('02715')
     assert_equal ['12', '23', '34', '45'], shift_generator.frameshift('12345')
   end
+
+  def test_it_can_convert_key_to_shifts
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+    shift_generator.stubs(:frameshift).returns(['02', '27', '71', '15'])
+    expected = { A: 2, B: 27, C: 71, D: 15 }
+
+    assert_equal expected, shift_generator.key_to_shifts('02715')
+  end
 end
