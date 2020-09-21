@@ -41,6 +41,20 @@ class ShiftGeneratorTest < Minitest::Test
     assert_equal '02715', shift_generator.generate_key
   end
 
+  def test_it_can_generate_dates
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+    today = Date.new(1995,8,4)
+    Date.stubs(:today).returns(today)
+
+    assert_equal '040895', shift_generator.generate_date
+
+    today = Date.new(1995,12,14)
+    Date.stubs(:today).returns(today)
+
+    assert_equal '141295', shift_generator.generate_date
+  end
+
   # def test_it_can_evaluate_incoming_key_date_data
   #   skip
   #   enigma = mock('Enigma object')
