@@ -64,4 +64,13 @@ class CryptManagerTest < Minitest::Test
     assert_equal expected, @crypt_manager.encrypt("HeLLo WOrlD\n", ['02715',
                                                                     '040895'])
   end
+
+  def test_it_can_decrypt_a_message_and_format_output
+    decrypted = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+    @crypt_manager.stubs(:decrypt_message).returns(decrypted)
+    expected = { decryption: 'hello world', key: '02715', date: '040895' }
+
+    assert_equal expected, @crypt_manager.decrypt('keder ohulw', ['02715',
+                                                                  '040895'])
+  end
 end
