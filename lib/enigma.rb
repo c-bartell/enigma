@@ -27,6 +27,10 @@ class Enigma
     crypt_manager.decrypt(ciphertext, [key, date])
   end
 
+  def input_text
+    io_manager.input_text
+  end
+
   def finish(results, symbol)
     io_manager.finish(results, symbol)
   end
@@ -37,14 +41,7 @@ class Enigma
   end
 
   def decrypt_file
-    # I ran out of time, but I would pull out all of these methods in refactor
     io_manager.get_text
     finish(decrypt(io_manager.input_text, io_manager.key_input, io_manager.date_input), :decryption)
-
-    # results = decrypt(io_manager.input_text,
-    #                   io_manager.key_input, io_manager.date_input)
-    # io_manager.stage_output(results[:decryption])
-    # io_manager.write_out
-    # io_manager.show_summary(results)
   end
 end
