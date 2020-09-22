@@ -7,6 +7,10 @@ class CipherTest < Minitest::Test
     @cipher = Cipher.new(@crypt_manager)
   end
 
+  def test_it_exists
+    assert_instance_of Cipher, @cipher
+  end
+
   def test_it_has_attributes
     assert_equal @crypt_manager, @cipher.crypt_manager
     assert_nil @cipher.a_shift
