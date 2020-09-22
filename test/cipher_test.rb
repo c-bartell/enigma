@@ -139,9 +139,5 @@ class CipherTest < Minitest::Test
     expected = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
 
     assert_equal expected, @cipher.decrypt(message, ['02715', '040895'])
-    assert_nil @cipher.a_shift
-    assert_nil @cipher.b_shift
-    assert_nil @cipher.c_shift
-    assert_nil @cipher.d_shift
   end
 end

@@ -78,9 +78,6 @@ class Cipher
 
   def decrypt(ciphertext, key_date_data)
     update_shifts(key_date_data)
-    decrypted = decrypterate(ciphertext)
-    clear_shifts
-
-    decrypted
+    return_reset(decrypterate(ciphertext))
   end
 end
