@@ -7,6 +7,8 @@ class EnigmaTest < Minitest::Test
     CryptManager.stubs(:new).returns(@crypt_manager)
     @shift_generator = mock('ShiftGenerator object')
     ShiftGenerator.stubs(:new).returns(@shift_generator)
+    @io_manager.mock('IOManager object')
+    IOManager.stubs(:new).returns(@io_manager)
     @enigma = Enigma.new
   end
 
@@ -20,6 +22,7 @@ class EnigmaTest < Minitest::Test
 
     assert_equal @crypt_manager, @enigma.crypt_manager
     assert_equal @shift_generator, @enigma.shift_generator
+    assert_equal @io_manager, @enigma.io_manager
   end
 
   def test_it_can_validate_key_date_data
