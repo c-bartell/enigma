@@ -77,6 +77,13 @@ class CipherTest < Minitest::Test
     assert_equal 'h', @cipher.encrypt_letter('z', 36)
   end
 
+  def test_it_can_decrypt_a_letter
+    assert_equal 'a', @cipher.decrypt_letter('d', 3)
+    assert_equal 'z', @cipher.decrypt_letter('b', 3)
+    assert_equal 'a', @cipher.decrypt_letter('j', 36)
+    assert_equal 'z', @cipher.decrypt_letter('h', 36)
+  end
+
   def test_it_can_choose_the_correct_shift
     shifts = { A: 5, B: 12, C: 14, D: 74 }
     @cipher.assign_shifts(shifts)

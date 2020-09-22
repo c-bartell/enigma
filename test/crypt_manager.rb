@@ -43,7 +43,7 @@ class CryptManagerTest < Minitest::Test
     @crypt_manager.stubs(:format).returns(message)
 
     assert_equal encrypted, @crypt_manager.encrypt_message("HeLLo WOrlD\n",
-                                                       ['02715', '040895'])
+                                                           ['02715', '040895'])
   end
 
   def test_it_can_encrypt_a_message_and_format_output
@@ -52,6 +52,6 @@ class CryptManagerTest < Minitest::Test
     expected = { encryption: 'keder ohulw', key: '02715', date: '040895' }
 
     assert_equal expected, @crypt_manager.encrypt("HeLLo WOrlD\n", ['02715',
-                                                                '040895'])
+                                                                    '040895'])
   end
 end
