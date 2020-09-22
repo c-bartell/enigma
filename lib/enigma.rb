@@ -27,6 +27,10 @@ class Enigma
     crypt_manager.decrypt(ciphertext, [key, date])
   end
 
+  def finish(results, symbol)
+    io_manager.finish(results, symbol)
+  end
+
   def encrypt_file
     # I ran out of time, but I would pull out all of these methods in refactor
     io_manager.get_text
