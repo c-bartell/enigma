@@ -20,4 +20,8 @@ class Enigma
   def encrypt(message, *key_date_data)
     crypt_manager.encrypt(message, key_date(key_date_data))
   end
+
+  def decrypt(ciphertext, key, date)
+    crypt_manager.decrypt(ciphertext, [key, date])
+  end
 end
