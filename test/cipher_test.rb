@@ -112,13 +112,24 @@ class CipherTest < Minitest::Test
     assert_equal expected, @cipher.decrypterate(message)
   end
 
+  def test_it_can_return_and_reset
+    shifts = { A: 3, B: 27, C: 73, D: 20 }
+    @cipher.assign_shifts(shifts)
+
+    assert_equal 'input', cipher.return_reset('input')
+    assert_nil @cipher.a_shift
+    assert_nil @cipher.b_shift
+    assert_nil @cipher.c_shift
+    assert_nil @cipher.d_shift
+  end
+
   def test_it_can_encrypt_a_message_and_reset
     shifts = { A: 3, B: 27, C: 73, D: 20 }
     @crypt_manager.stubs(:request_shifts).returns(shifts)
     message = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
     expected = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
 
-    assert_equal expected, @cipher.encrypt(message, [])
+    assert_equal expected, @cipher.encrypt(message, ['02715', '040895'])
     assert_nil @cipher.a_shift
     assert_nil @cipher.b_shift
     assert_nil @cipher.c_shift
@@ -131,7 +142,7 @@ class CipherTest < Minitest::Test
     message = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
     expected = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
 
-    assert_equal expected, @cipher.decrypt(message, [])
+    assert_equal expected, @cipher.decrypt(message, ['02715', '040895'])
     assert_nil @cipher.a_shift
     assert_nil @cipher.b_shift
     assert_nil @cipher.c_shift
