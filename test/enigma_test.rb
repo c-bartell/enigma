@@ -3,8 +3,8 @@ require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def enigmock
-    @encryptor = mock('Encryptor object')
-    Encryptor.stubs(:new).returns(@encryptor)
+    @crypt_manager = mock('CryptManager object')
+    CryptManager.stubs(:new).returns(@crypt_manager)
     @shift_generator = mock('ShiftGenerator object')
     ShiftGenerator.stubs(:new).returns(@shift_generator)
     @enigma = Enigma.new
@@ -13,7 +13,7 @@ class EnigmaTest < Minitest::Test
   def test_it_has_attributes
     enigmock
 
-    assert_equal @encryptor, @enigma.encryptor
+    assert_equal @crypt_manager, @enigma.crypt_manager
     assert_equal @shift_generator, @enigma.shift_generator
   end
 

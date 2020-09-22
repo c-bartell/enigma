@@ -1,7 +1,7 @@
 require './lib/cipher'
 require './lib/shift_generator'
 
-class Encryptor
+class CryptManager
   attr_reader :enigma, :cipher
 
   def initialize(enigma)

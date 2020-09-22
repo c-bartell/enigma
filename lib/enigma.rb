@@ -1,11 +1,11 @@
-require './lib/encryptor'
+require './lib/crypt_manager'
 require './lib/shift_generator'
 
 class Enigma
-  attr_reader :encryptor, :shift_generator
+  attr_reader :crypt_manager, :shift_generator
 
   def initialize
-    @encryptor = Encryptor.new(self)
+    @crypt_manager = CryptManager.new(self)
     @shift_generator = ShiftGenerator.new(self)
   end
 
@@ -18,6 +18,6 @@ class Enigma
   end
 
   def encrypt(message, *key_date_data)
-    encryptor.encrypt(message, key_date(key_date_data))
+    crypt_manager.encrypt(message, key_date(key_date_data))
   end
 end

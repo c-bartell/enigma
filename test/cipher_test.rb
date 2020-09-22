@@ -3,12 +3,12 @@ require './lib/cipher'
 
 class CipherTest < Minitest::Test
   def setup
-    @encryptor = mock('Encryptor Object')
-    @cipher = Cipher.new(@encryptor)
+    @crypt_manager = mock('CryptManager Object')
+    @cipher = Cipher.new(@crypt_manager)
   end
 
   def test_it_has_attributes
-    assert_equal @encryptor, @cipher.encryptor
+    assert_equal @crypt_manager, @cipher.crypt_manager
     assert_nil @cipher.a_shift
     assert_nil @cipher.b_shift
     assert_nil @cipher.c_shift
@@ -17,7 +17,7 @@ class CipherTest < Minitest::Test
 
   def test_it_can_request_shifts
     shifts = { A: 5, B: 12, C: 14, D: 74 }
-    @encryptor.stubs(:request_shifts).returns(shifts)
+    @crypt_manager.stubs(:request_shifts).returns(shifts)
 
     assert_equal shifts, @cipher.request_shifts(['nothing or key and or date'])
   end
@@ -34,7 +34,7 @@ class CipherTest < Minitest::Test
 
   def test_it_can_update_shift_values
     shifts = { A: 5, B: 12, C: 14, D: 74 }
-    @encryptor.stubs(:request_shifts).returns(shifts)
+    @crypt_manager.stubs(:request_shifts).returns(shifts)
     @cipher.update_shifts(['nothing or key and or date'])
 
     assert_equal 5, @cipher.a_shift
@@ -98,7 +98,7 @@ class CipherTest < Minitest::Test
 
   def test_it_can_encrypt_a_message_and_reset
     shifts = { A: 3, B: 27, C: 73, D: 20 }
-    @encryptor.stubs(:request_shifts).returns(shifts)
+    @crypt_manager.stubs(:request_shifts).returns(shifts)
     message = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
     expected = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
 

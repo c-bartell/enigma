@@ -1,8 +1,8 @@
 class Cipher
-  attr_reader :a_shift, :b_shift, :c_shift, :d_shift, :encryptor
+  attr_reader :a_shift, :b_shift, :c_shift, :d_shift, :crypt_manager
 
-  def initialize(encryptor)
-    @encryptor = encryptor
+  def initialize(crypt_manager)
+    @crypt_manager = crypt_manager
     @a_shift = nil
     @b_shift = nil
     @c_shift = nil
@@ -10,7 +10,7 @@ class Cipher
   end
 
   def request_shifts(key_date_data)
-    encryptor.request_shifts(key_date_data)
+    crypt_manager.request_shifts(key_date_data)
   end
 
   def assign_shifts(shifts)
