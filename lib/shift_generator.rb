@@ -41,12 +41,9 @@ class ShiftGenerator
   end
 
   def frameshift(key)
-    shifts = []
-    4.times do |index|
-      shifts << key[index, 2]
+    4.times.map do |index|
+      key[index, 2]
     end
-
-    shifts
   end
 
   def key_to_shifts(key)
