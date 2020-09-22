@@ -26,4 +26,12 @@ class Enigma
   def decrypt(ciphertext, key, date)
     crypt_manager.decrypt(ciphertext, [key, date])
   end
+
+  def encrypt_file
+    io_manager.get_text
+    results = encrypt(io_manager.input_text, key_date)
+    io_manager.stage_output(results[:encryption])
+    io_manager.write_out
+    io_manager.show_summary(results)
+  end
 end
