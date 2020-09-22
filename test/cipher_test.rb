@@ -103,6 +103,15 @@ class CipherTest < Minitest::Test
     assert_equal expected, @cipher.encrypterate(message)
   end
 
+  def test_it_can_decrypterate_over_a_message_array
+    shifts = { A: 3, B: 27, C: 73, D: 20 }
+    @cipher.assign_shifts(shifts)
+    message = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
+    expected = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+
+    assert_equal expected, @cipher.decrypterate(message)
+  end
+
   def test_it_can_encrypt_a_message_and_reset
     shifts = { A: 3, B: 27, C: 73, D: 20 }
     @crypt_manager.stubs(:request_shifts).returns(shifts)
