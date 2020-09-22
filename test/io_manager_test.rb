@@ -8,9 +8,9 @@ class IOManagerTest < Minitest::Test
   end
 
   def write_to_fixture(path, content)
-    file = File.open(path, 'w')
-    file.write(content)
-    file.close
+    File.open(path, 'w') do |file|
+      file.write(content)
+    end
   end
 
   def test_it_exists
@@ -38,10 +38,22 @@ class IOManagerTest < Minitest::Test
   def test_it_can_generate_input_text
     path = './test/message_fixture.txt'
     write_to_fixture(path, 'hello world')
-    @io_manager.stubs(:input_path).returns('./test/message_fixture.txt')
+    @io_manager.stubs(:input_path).returns(path)
     @io_manager.get_text
     write_to_fixture(path, '')
 
     assert_equal 'hello world', @io_manager.input_text
+  end
+
+  def test_it_can_write_to_a_file
+    path = './test/encrypted_fixture.txt'
+    @io_manager.stubs(:output_path).returns(path)
+    @io_manager.stubs(:output_text).returns('keder ohulw')
+    @io_manager.write_out
+    write_to_fixture(path, '')
+
+    assert_equal 'keder ohulw', @io_manager.input_text
+
+    write_to_fixture(path, '')
   end
 end
