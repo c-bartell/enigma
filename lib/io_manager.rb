@@ -47,4 +47,10 @@ class IOManager
   def show_summary(results)
     puts(summary(results))
   end
+
+  def finish(results, symbol)
+    stage_output(results[symbol])
+    write_out
+    show_summary(results)
+  end
 end
