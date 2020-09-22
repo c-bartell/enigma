@@ -67,6 +67,13 @@ class EnigmaTest < Minitest::Test
     assert_equal 'hello world', @enigma.input_text
   end
 
+  def test_it_can_get_key_input
+    enigmock
+    @io_manager.stubs(:key_input).returns('02715')
+
+    assert_equal '02715', @enigma.key_input
+  end
+
   def test_it_can_finish_results
     enigmock
     @io_manager.stubs(:finish).returns('Success')
