@@ -41,6 +41,14 @@ class EncryptorTest < Minitest::Test
     encrypted = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
     @cipher.stubs(:encrypt).returns(encrypted)
     @encryptor.stubs(:format).returns(message)
+
+    assert_equal encrypted, @encryptor.encrypt_message("HeLLo WOrlD\n",
+                                                       ['02715', '040895'])
+  end
+
+  def test_it_can_encrypt_a_message_and_format_output
+    encrypted = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
+    @encryptor.stubs(:encrypt_message).returns(encrypted)
     expected = { encryption: 'keder ohulw', key: '02715', date: '040895' }
 
     assert_equal expected, @encryptor.encrypt("HeLLo WOrlD\n", ['02715',

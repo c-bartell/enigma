@@ -13,7 +13,7 @@ class Encryptor
     message.downcase.chomp.split('')
   end
 
-  def request_shifts(key_date_data) # key_date_data comes in as [key_string, date_string]
+  def request_shifts(key_date_data)
     enigma.request_shifts(key_date_data)
   end
 
@@ -25,7 +25,11 @@ class Encryptor
     }
   end
 
-  def encrypt(message, key_date_data) # Break out cipher.encrypt(format(message))
-    package(cipher.encrypt(format(message), key_date_data), key_date_data)
+  def encrypt_message(message, key_date_data)
+    cipher.encrypt(format(message), key_date_data)
+  end
+
+  def encrypt(message, key_date_data)
+    package(encrypt_message(message, key_date_data), key_date_data)
   end
 end
