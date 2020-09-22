@@ -74,6 +74,13 @@ class EnigmaTest < Minitest::Test
     assert_equal '02715', @enigma.key_input
   end
 
+  def test_it_can_get_date_input
+    enigmock
+    @io_manager.stubs(:date_input).returns('040895')
+
+    assert_equal '040895', @enigma.date_input
+  end
+
   def test_it_can_finish_results
     enigmock
     @io_manager.stubs(:finish).returns('Success')
