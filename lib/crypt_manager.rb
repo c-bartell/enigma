@@ -17,7 +17,7 @@ class CryptManager
     enigma.request_shifts(key_date_data)
   end
 
-  def package(encrypted, key_date_data)
+  def encoded_package(encrypted, key_date_data)
     {
       key: key_date_data[0],
       date: key_date_data[1],
@@ -34,6 +34,6 @@ class CryptManager
   end
 
   def encrypt(message, key_date_data)
-    package(encrypt_message(message, key_date_data), key_date_data)
+    encoded_package(encrypt_message(message, key_date_data), key_date_data)
   end
 end
