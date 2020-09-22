@@ -8,7 +8,7 @@ class ShiftGenerator
   def combi_length(key_date_data)
     key_date_data.sum(&:length)
   end
-  
+
   def pad(string, width)
     string.rjust(width, '0')
   end
@@ -21,16 +21,23 @@ class ShiftGenerator
     Date.today.strftime('%d%m%y')
   end
 
-  def key_date(key_date_data) # Could break into helpers that call e/o in first line guard clauses if length not correct
-    if combi_length(key_date_data) == 11
-      key_date_data
-    elsif combi_length(key_date_data) == 6
-      key_date_data.unshift(generate_key)
-    elsif combi_length(key_date_data) == 5
-      key_date_data.push(generate_date)
-    else
-      [generate_key, generate_date]
-    end
+  def quality_check1(key_date_data)
+    return quality_check2(key_date_data) if combi_length(key_date_data) != 11
+    key_date_data
+  end
+
+  def quality_check2(key_date_data)
+    return quality_check3(key_date_data) if combi_length(key_date_data) != 6
+    key_date_data.unshift(generate_key)
+  end
+
+  def quality_check3(key_date_data)
+    return [generate_key, generate_date] if combi_length(key_date_data) != 5
+    key_date_data.push(generate_date)
+  end
+
+  def key_date(key_date_data)
+    quality_check1(key_date_data)
   end
 
   def frameshift(key) # Refactor with each_with_index.map

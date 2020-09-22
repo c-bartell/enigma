@@ -55,18 +55,46 @@ class ShiftGeneratorTest < Minitest::Test
     assert_equal '141295', shift_generator.generate_date
   end
 
-  def test_it_can_validate_key_date_data
+  def test_quality_check_1
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+    shift_generator.stubs(:quality_check2).returns('next method')
+
+
+    assert_equal ['02715', '040895'], shift_generator.quality_check1(['02715',
+                                                                      '040895'])
+    assert_equal 'next method', shift_generator.quality_check1(['040895'])
+    assert_equal 'next method', shift_generator.quality_check1([])
+  end
+
+  def test_quality_check_2
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+    shift_generator.stubs(:generate_key).returns('02715')
+    shift_generator.stubs(:quality_check3).returns('next method')
+
+
+    assert_equal ['02715', '040895'], shift_generator.quality_check2(['040895'])
+    assert_equal 'next method', shift_generator.quality_check2(['02715'])
+    assert_equal 'next method', shift_generator.quality_check2([])
+  end
+
+  def test_quality_check_3
     enigma = mock('Enigma object')
     shift_generator = ShiftGenerator.new(enigma)
     shift_generator.stubs(:generate_key).returns('02715')
     shift_generator.stubs(:generate_date).returns('040895')
-    expected = ['02715', '040895']
 
-    assert_equal expected, shift_generator.key_date(['02715',
-                                                     '040895'])
-    assert_equal expected, shift_generator.key_date(['040895'])
-    assert_equal expected, shift_generator.key_date(['02715'])
-    assert_equal expected, shift_generator.key_date([])
+    assert_equal ['02715', '040895'], shift_generator.quality_check3(['02715'])
+    assert_equal ['02715', '040895'], shift_generator.quality_check3([])
+  end
+
+  def test_it_can_validate_key_date_data
+    enigma = mock('Enigma object')
+    shift_generator = ShiftGenerator.new(enigma)
+    shift_generator.stubs(:quality_check1).returns(['02715', '040895'])
+
+    assert_equal ['02715', '040895'], shift_generator.key_date([])
   end
 
   def test_it_can_frameshift_key
