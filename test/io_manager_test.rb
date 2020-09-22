@@ -35,6 +35,18 @@ class IOManagerTest < Minitest::Test
     assert_equal 'encrypted.txt', @io_manager.output_path
   end
 
+  def test_it_can_read_key_input
+    ARGV.replace(['message.txt', 'encrypted.txt', '02715', '040895'])
+
+    assert_equal '02715', @io_manager.key_input
+  end
+
+  def test_it_can_read_date_input
+    ARGV.replace(['message.txt', 'encrypted.txt', '02715', '040895'])
+
+    assert_equal '040895', @io_manager.date_input
+  end
+
   def test_it_can_generate_input_text
     path = './test/message_fixture.txt'
     write_to_fixture(path, 'hello world')
