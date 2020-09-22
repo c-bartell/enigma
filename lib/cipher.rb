@@ -60,6 +60,12 @@ class Cipher
     end
   end
 
+  def decrypterate(message)
+    message.each_with_index.map do |letter, index|
+      decrypt_letter(letter, shift_at_index(index))
+    end
+  end
+
   def encrypt(message, key_date_data)
     update_shifts(key_date_data)
     encrypted = encrypterate(message)
