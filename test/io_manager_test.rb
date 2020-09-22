@@ -90,4 +90,18 @@ class IOManagerTest < Minitest::Test
 
     assert_equal 'It called puts.', @io_manager.show_summary(results)
   end
+
+  def test_it_can_finish_output
+    results = { decryption: 'hello world', key: '02715', date: '040895' }
+    @io_manager.stubs(:write_out).returns(nil)
+    @io_manager.stubs(:show_summary).returns('Success!')
+
+    assert_equal 'Success!', @io_manager.finish(results, :decryption)
+    assert_equal 'hello world', @io_manager.output_text
+
+    results = { encryption: 'keder ohulw', key: '02715', date: '040895' }
+
+    assert_equal 'Success!', @io_manager.finish(results, :encryption)
+    assert_equal 'keder ohulw', @io_manager.output_text
+  end
 end
