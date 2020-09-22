@@ -1,8 +1,8 @@
 class Cipher
-  attr_reader :a_shift, :b_shift, :c_shift, :d_shift, :encryptor
+  attr_reader :a_shift, :b_shift, :c_shift, :d_shift, :crypt_manager
 
-  def initialize(encryptor)
-    @encryptor = encryptor
+  def initialize(crypt_manager)
+    @crypt_manager = crypt_manager
     @a_shift = nil
     @b_shift = nil
     @c_shift = nil
@@ -10,7 +10,7 @@ class Cipher
   end
 
   def request_shifts(key_date_data)
-    encryptor.request_shifts(key_date_data)
+    crypt_manager.request_shifts(key_date_data)
   end
 
   def assign_shifts(shifts)
@@ -43,6 +43,10 @@ class Cipher
     shifted_characters(shift)[characters.index(letter)]
   end
 
+  def decrypt_letter(letter, shift)
+    shifted_characters(-shift)[characters.index(letter)]
+  end
+
   def shift_at_index(index)
     return a_shift if ((index + 1) % 4) == 1
     return b_shift if ((index + 1) % 4) == 2
@@ -56,11 +60,24 @@ class Cipher
     end
   end
 
+  def decrypterate(message)
+    message.each_with_index.map do |letter, index|
+      decrypt_letter(letter, shift_at_index(index))
+    end
+  end
+
+  def return_reset(value)
+    clear_shifts
+    value
+  end
+
   def encrypt(message, key_date_data)
     update_shifts(key_date_data)
-    encrypted = encrypterate(message)
-    clear_shifts
+    return_reset(encrypterate(message))
+  end
 
-    encrypted
+  def decrypt(ciphertext, key_date_data)
+    update_shifts(key_date_data)
+    return_reset(decrypterate(ciphertext))
   end
 end

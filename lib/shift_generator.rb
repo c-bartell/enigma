@@ -23,16 +23,19 @@ class ShiftGenerator
 
   def quality_check1(key_date_data)
     return quality_check2(key_date_data) if combi_length(key_date_data) != 11
+
     key_date_data
   end
 
   def quality_check2(key_date_data)
     return quality_check3(key_date_data) if combi_length(key_date_data) != 6
+
     key_date_data.unshift(generate_key)
   end
 
   def quality_check3(key_date_data)
     return [generate_key, generate_date] if combi_length(key_date_data) != 5
+
     key_date_data.push(generate_date)
   end
 
@@ -41,12 +44,9 @@ class ShiftGenerator
   end
 
   def frameshift(key)
-    shifts = []
-    4.times do |index|
-      shifts << key[index, 2]
+    4.times.map do |index|
+      key[index, 2]
     end
-
-    shifts
   end
 
   def key_to_shifts(key)
