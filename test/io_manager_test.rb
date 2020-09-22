@@ -65,7 +65,7 @@ class IOManagerTest < Minitest::Test
 
   def test_it_can_generate_a_summary_message
     results = { key: '02715', date: '040895' }
-    expected = "Created 'encrypted.txt' with the key 82648 and date 240818"
+    expected = "Created 'encrypted.txt' with the key 02715 and date 040895"
     @io_manager.stubs(:output_path).returns('encrypted.txt')
 
     assert_equal expected, @io_manager.summary(results)

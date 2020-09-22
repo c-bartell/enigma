@@ -30,4 +30,9 @@ class IOManager
       file.write(output_text)
     end
   end
+
+  def summary(results)
+    "Created '#{output_path}' with the key #{results[:key]} and date " +
+    "#{results[:date]}"
+  end
 end
