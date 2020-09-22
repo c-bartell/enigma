@@ -36,6 +36,14 @@ class CryptManagerTest < Minitest::Test
     assert_equal expected, @crypt_manager.encoded_package(encrypted, key_date)
   end
 
+  def test_it_can_package_decoded_results
+    decrypted = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+    key_date = ['02715', '040895']
+    expected = { decryption: 'hello world', key: '02715', date: '040895' }
+
+    assert_equal expected, @crypt_manager.decoded_package(decrypted, key_date)
+  end
+
   def test_it_can_encrypt_a_message
     message = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
     encrypted = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
