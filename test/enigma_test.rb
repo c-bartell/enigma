@@ -60,6 +60,14 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.decrypt(ciphertext, key, date)
   end
 
+  def test_it_can_finish_results
+    enigmock
+    @io_manager.stubs(:finish).returns('Success')
+    results = { decryption: 'hello world', key: '02715', date: '040895' }
+
+    assert_equal 'Success', @enigma.finish(results, :decryption)
+  end
+
   def write_to_fixture(path, content)
     File.open(path, 'w') do |file|
       file.write(content)
