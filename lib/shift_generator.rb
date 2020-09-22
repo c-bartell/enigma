@@ -6,11 +6,9 @@ class ShiftGenerator
   end
 
   def combi_length(key_date_data)
-    key_date_data.sum do |datum|
-      datum.length
-    end
+    key_date_data.sum(&:length)
   end
-
+  
   def pad(string, width)
     string.rjust(width, '0')
   end
@@ -20,7 +18,7 @@ class ShiftGenerator
   end
 
   def generate_date
-    Date.today.strftime("%d%m%y")
+    Date.today.strftime('%d%m%y')
   end
 
   def key_date(key_date_data) # Could break into helpers that call e/o in first line guard clauses if length not correct

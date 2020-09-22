@@ -44,12 +44,12 @@ class ShiftGeneratorTest < Minitest::Test
   def test_it_can_generate_dates
     enigma = mock('Enigma object')
     shift_generator = ShiftGenerator.new(enigma)
-    today = Date.new(1995,8,4)
+    today = Date.new(1995, 8, 4)
     Date.stubs(:today).returns(today)
 
     assert_equal '040895', shift_generator.generate_date
 
-    today = Date.new(1995,12,14)
+    today = Date.new(1995, 12, 14)
     Date.stubs(:today).returns(today)
 
     assert_equal '141295', shift_generator.generate_date
@@ -63,7 +63,7 @@ class ShiftGeneratorTest < Minitest::Test
     expected = ['02715', '040895']
 
     assert_equal expected, shift_generator.key_date(['02715',
-      '040895'])
+                                                     '040895'])
     assert_equal expected, shift_generator.key_date(['040895'])
     assert_equal expected, shift_generator.key_date(['02715'])
     assert_equal expected, shift_generator.key_date([])
@@ -105,7 +105,7 @@ class ShiftGeneratorTest < Minitest::Test
     enigma = mock('Enigma object')
     shift_generator = ShiftGenerator.new(enigma)
     shift_generator.stubs(:key_to_shifts).returns({ A: 2, B: 27, C: 71,
-      D: 15 })
+                                                    D: 15 })
     shift_generator.stubs(:offsets).returns({ A: 1, B: 0, C: 2, D: 5 })
     expected = { A: 3, B: 27, C: 73, D: 20 }
 
@@ -119,6 +119,6 @@ class ShiftGeneratorTest < Minitest::Test
     expected = { A: 3, B: 27, C: 73, D: 20 }
 
     assert_equal expected, shift_generator.convert_to_shifts(['02715',
-      '040895'])
+                                                              '040895'])
   end
 end

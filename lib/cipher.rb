@@ -13,7 +13,7 @@ class Cipher
     encryptor.request_shifts(key_date_data)
   end
 
-  def set_shifts(shifts)
+  def assign_shifts(shifts)
     @a_shift = shifts[:A]
     @b_shift = shifts[:B]
     @c_shift = shifts[:C]
@@ -21,7 +21,7 @@ class Cipher
   end
 
   def update_shifts(key_date_data)
-    set_shifts(request_shifts(key_date_data))
+    assign_shifts(request_shifts(key_date_data))
   end
 
   def clear_shifts
