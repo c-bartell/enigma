@@ -71,9 +71,11 @@ class IOManagerTest < Minitest::Test
     assert_equal expected, @io_manager.summary(results)
   end
 
-  def test_it_can_puts_to_terminal
-    @io_manager.stubs(:puts).returns('It called puts.')
+  def test_it_can_puts_summary_to_terminal
+    results = mock('Results hash')
+    $stdout.stubs(:puts).returns('It called puts.')
+    @io_manager.stubs(:summary).returns(nil)
 
-    assert_equal 'It called puts.', @io_manager.show('text')
+    assert_equal 'It called puts.', @io_manager.show_summary(results)
   end
 end

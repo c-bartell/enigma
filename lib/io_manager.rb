@@ -35,4 +35,8 @@ class IOManager
     "Created '#{output_path}' with the key #{results[:key]} and date " +
     "#{results[:date]}"
   end
+
+  def show_summary(results)
+    puts(summary(results))
+  end
 end
