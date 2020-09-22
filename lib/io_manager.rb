@@ -20,4 +20,10 @@ class IOManager
       file.read
     end
   end
+
+  def write_out
+    File.open(output_path, 'w') do |file|
+      file.write(output_text)
+    end
+  end
 end
