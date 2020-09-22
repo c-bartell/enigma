@@ -45,11 +45,17 @@ class IOManagerTest < Minitest::Test
     assert_equal 'hello world', @io_manager.input_text
   end
 
+  def test_it_can_stage_output_text
+    @io_manager.stage_output('keder ohulw')
+
+    assert_equal 'keder ohulw', @io_manager.output_text
+  end
+
   def test_it_can_write_to_a_file
     path = './test/encrypted_fixture.txt'
     @io_manager.stubs(:input_path).returns(path)
     @io_manager.stubs(:output_path).returns(path)
-    @io_manager.stubs(:output_text).returns('keder ohulw')
+    @io_manager.stage_output('keder ohulw')
     @io_manager.write_out
     @io_manager.get_text
     write_to_fixture(path, '')
