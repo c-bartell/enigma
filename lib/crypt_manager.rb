@@ -25,6 +25,14 @@ class CryptManager
     }
   end
 
+  def decoded_package(encrypted, key_date_data)
+    {
+      key: key_date_data[0],
+      date: key_date_data[1],
+      decryption: encrypted.join
+    }
+  end
+
   def encrypt_message(message, key_date_data)
     cipher.encrypt(format(message), key_date_data)
   end
