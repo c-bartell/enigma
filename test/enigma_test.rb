@@ -60,6 +60,13 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.decrypt(ciphertext, key, date)
   end
 
+  def test_it_can_get_input_text
+    enigmock
+    @io_manager.stubs(:input_text).returns('hello world')
+
+    assert_equal 'hello world', @enigma.input_text
+  end
+
   def test_it_can_finish_results
     enigmock
     @io_manager.stubs(:finish).returns('Success')
