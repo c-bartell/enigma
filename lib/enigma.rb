@@ -3,11 +3,12 @@ require './lib/shift_generator'
 require './lib/io_manager'
 
 class Enigma
-  attr_reader :crypt_manager, :shift_generator
+  attr_reader :crypt_manager, :shift_generator, :io_manager
 
   def initialize
     @crypt_manager = CryptManager.new(self)
     @shift_generator = ShiftGenerator.new(self)
+    @io_manager = IOManager.new(self)
   end
 
   def key_date(key_date_data)

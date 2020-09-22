@@ -7,7 +7,7 @@ class EnigmaTest < Minitest::Test
     CryptManager.stubs(:new).returns(@crypt_manager)
     @shift_generator = mock('ShiftGenerator object')
     ShiftGenerator.stubs(:new).returns(@shift_generator)
-    @io_manager.mock('IOManager object')
+    @io_manager = mock('IOManager object')
     IOManager.stubs(:new).returns(@io_manager)
     @enigma = Enigma.new
   end
