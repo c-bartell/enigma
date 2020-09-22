@@ -50,9 +50,8 @@ class ShiftGeneratorTest < Minitest::Test
   def test_quality_check_1
     @shift_generator.stubs(:quality_check2).returns('next method')
 
-
-    assert_equal ['02715', '040895'], @shift_generator.quality_check1(['02715',
-                                                                      '040895'])
+    assert_equal ['02715', '040895'],
+                 @shift_generator.quality_check1(['02715', '040895'])
     assert_equal 'next method', @shift_generator.quality_check1(['040895'])
     assert_equal 'next method', @shift_generator.quality_check1([])
   end
@@ -60,7 +59,6 @@ class ShiftGeneratorTest < Minitest::Test
   def test_quality_check_2
     @shift_generator.stubs(:generate_key).returns('02715')
     @shift_generator.stubs(:quality_check3).returns('next method')
-
 
     assert_equal ['02715', '040895'], @shift_generator.quality_check2(['040895'])
     assert_equal 'next method', @shift_generator.quality_check2(['02715'])
@@ -106,7 +104,7 @@ class ShiftGeneratorTest < Minitest::Test
 
   def test_it_can_generate_total_shifts
     @shift_generator.stubs(:key_to_shifts).returns({ A: 2, B: 27, C: 71,
-                                                    D: 15 })
+                                                     D: 15 })
     @shift_generator.stubs(:offsets).returns({ A: 1, B: 0, C: 2, D: 5 })
     expected = { A: 3, B: 27, C: 73, D: 20 }
 
@@ -118,6 +116,6 @@ class ShiftGeneratorTest < Minitest::Test
     expected = { A: 3, B: 27, C: 73, D: 20 }
 
     assert_equal expected, @shift_generator.convert_to_shifts(['02715',
-                                                              '040895'])
+                                                               '040895'])
   end
 end

@@ -52,6 +52,6 @@ class EncryptorTest < Minitest::Test
     expected = { encryption: 'keder ohulw', key: '02715', date: '040895' }
 
     assert_equal expected, @encryptor.encrypt("HeLLo WOrlD\n", ['02715',
-                                                               '040895'])
+                                                                '040895'])
   end
 end

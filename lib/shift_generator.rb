@@ -40,7 +40,7 @@ class ShiftGenerator
     quality_check1(key_date_data)
   end
 
-  def frameshift(key) # Refactor with each_with_index.map
+  def frameshift(key)
     shifts = []
     4.times do |index|
       shifts << key[index, 2]
