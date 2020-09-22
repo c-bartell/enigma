@@ -70,4 +70,10 @@ class IOManagerTest < Minitest::Test
 
     assert_equal expected, @io_manager.summary(results)
   end
+
+  def test_it_can_puts_to_terminal
+    @io_manager.stubs(:puts).returns('It called puts.')
+
+    assert_equal 'It called puts.', @io_manager.show('text')
+  end
 end
