@@ -46,6 +46,16 @@ class CryptManagerTest < Minitest::Test
                                                            ['02715', '040895'])
   end
 
+  def test_it_can_decrypt_a_message
+    ciphertext = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
+    decrypted = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+    @cipher.stubs(:decrypt).returns(decrypted)
+    @crypt_manager.stubs(:format).returns(ciphertext)
+
+    assert_equal decrypted, @crypt_manager.decrypt_message('keder ohulw',
+                                                           ['02715', '040895'])
+  end
+
   def test_it_can_encrypt_a_message_and_format_output
     encrypted = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
     @crypt_manager.stubs(:encrypt_message).returns(encrypted)
