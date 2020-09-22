@@ -11,7 +11,7 @@ class Enigma
     @io_manager = IOManager.new(self)
   end
 
-  def key_date(key_date_data)
+  def key_date(key_date_data = [])
     shift_generator.key_date(key_date_data)
   end
 
@@ -31,13 +31,17 @@ class Enigma
     io_manager.input_text
   end
 
+  def key_input
+    io_manager.key_input
+  end
+
   def finish(results, symbol)
     io_manager.finish(results, symbol)
   end
 
   def encrypt_file
     io_manager.get_text
-    finish(encrypt(io_manager.input_text, key_date([])), :encryption)
+    finish(encrypt(io_manager.input_text, key_date), :encryption)
   end
 
   def decrypt_file
