@@ -70,13 +70,10 @@ class Cipher
     clear_shifts
     value
   end
-  
+
   def encrypt(message, key_date_data)
     update_shifts(key_date_data)
-    encrypted = encrypterate(message)
-    clear_shifts
-
-    encrypted
+    return_reset(encrypterate(message))
   end
 
   def decrypt(ciphertext, key_date_data)

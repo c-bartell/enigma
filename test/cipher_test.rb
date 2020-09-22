@@ -130,10 +130,6 @@ class CipherTest < Minitest::Test
     expected = ['k', 'e', 'd', 'e', 'r', ' ', 'o', 'h', 'u', 'l', 'w']
 
     assert_equal expected, @cipher.encrypt(message, ['02715', '040895'])
-    assert_nil @cipher.a_shift
-    assert_nil @cipher.b_shift
-    assert_nil @cipher.c_shift
-    assert_nil @cipher.d_shift
   end
 
   def test_it_can_decrypt_a_message_and_reset
