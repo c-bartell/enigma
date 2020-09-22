@@ -35,6 +35,10 @@ class Enigma
     io_manager.key_input
   end
 
+  def date_input
+    io_manager.date_input
+  end
+
   def finish(results, symbol)
     io_manager.finish(results, symbol)
   end
