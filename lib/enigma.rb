@@ -39,8 +39,8 @@ class Enigma
   def decrypt_file
     # I ran out of time, but I would pull out all of these methods in refactor
     io_manager.get_text
-    kd = key_date
-    results = decrypt(io_manager.input_text, kd[0], kd[1])
+    results = decrypt(io_manager.input_text,
+                      io_manager.key_input, io_manager.date_input)
     io_manager.stage_output(results[:decryption])
     io_manager.write_out
     io_manager.show_summary(results)
