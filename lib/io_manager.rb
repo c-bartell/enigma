@@ -21,6 +21,10 @@ class IOManager
     end
   end
 
+  def stage_output(text)
+    @output_text = text
+  end
+
   def write_out
     File.open(output_path, 'w') do |file|
       file.write(output_text)
