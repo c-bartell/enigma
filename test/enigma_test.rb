@@ -10,6 +10,11 @@ class EnigmaTest < Minitest::Test
     @enigma = Enigma.new
   end
 
+  def test_it_exists
+    enigmock
+    assert_instance_of Enigma, @enigma
+  end
+
   def test_it_has_attributes
     enigmock
 
