@@ -15,6 +15,14 @@ class IOManager
     ARGV[1]
   end
 
+  def key_input
+    ARGV[2]
+  end
+
+  def date_input
+    ARGV[3]
+  end
+
   def get_text
     @input_text = File.open(input_path, 'r') do |file|
       file.read
