@@ -19,4 +19,10 @@ class IOManagerTest < Minitest::Test
 
     assert_equal 'message.txt', @io_manager.input_path
   end
+
+  def test_it_can_read_output_path
+    ARGV.replace(['message.txt', 'encrypted.txt'])
+
+    assert_equal 'encrypted.txt', @io_manager.output_path    
+  end
 end
