@@ -27,6 +27,12 @@ class Enigma
     crypt_manager.decrypt(ciphertext, [key, date])
   end
 
+  # CLI/File IO methods
+
+  def read_file
+    io_manager.get_text
+  end
+
   def input_text
     io_manager.input_text
   end
