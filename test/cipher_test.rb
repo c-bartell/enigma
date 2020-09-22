@@ -23,8 +23,7 @@ class CipherTest < Minitest::Test
   end
 
   def test_it_can_set_new_shift_values
-    shifts = { A: 5, B: 12, C: 14, D: 74 }
-    @cipher.assign_shifts(shifts)
+    @cipher.assign_shifts({ A: 5, B: 12, C: 14, D: 74 })
 
     assert_equal 5, @cipher.a_shift
     assert_equal 12, @cipher.b_shift
@@ -44,8 +43,7 @@ class CipherTest < Minitest::Test
   end
 
   def test_it_can_clear_shifts
-    shifts = { A: 5, B: 12, C: 14, D: 74 }
-    @cipher.assign_shifts(shifts)
+    @cipher.assign_shifts({ A: 5, B: 12, C: 14, D: 74 })
     @cipher.clear_shifts
 
     assert_nil @cipher.a_shift
@@ -85,8 +83,7 @@ class CipherTest < Minitest::Test
   end
 
   def test_it_can_choose_the_correct_shift
-    shifts = { A: 5, B: 12, C: 14, D: 74 }
-    @cipher.assign_shifts(shifts)
+    @cipher.assign_shifts({ A: 5, B: 12, C: 14, D: 74 })
 
     assert_equal 5, @cipher.shift_at_index(0)
     assert_equal 74, @cipher.shift_at_index(99)
