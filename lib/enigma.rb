@@ -45,7 +45,7 @@ class Enigma
 
   def encrypt_file
     io_manager.get_text
-    finish(encrypt(io_manager.input_text, key_date), :encryption)
+    finish(encrypt(input_text, key_date), :encryption)
   end
 
   def decrypt_file
