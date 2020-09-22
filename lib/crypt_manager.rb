@@ -44,4 +44,8 @@ class CryptManager
   def encrypt(message, key_date_data)
     encoded_package(encrypt_message(message, key_date_data), key_date_data)
   end
+
+  def decrypt(ciphertext, key_date_data)
+    decoded_package(decrypt_message(ciphertext, key_date_data), key_date_data)
+  end
 end
