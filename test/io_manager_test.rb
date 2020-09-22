@@ -61,7 +61,13 @@ class IOManagerTest < Minitest::Test
     write_to_fixture(path, '')
 
     assert_equal 'keder ohulw', @io_manager.input_text
+  end
 
-    write_to_fixture(path, '')
+  def test_it_can_generate_a_summary_message
+    results = { key: '02715', date: '040895' }
+    expected = "Created 'encrypted.txt' with the key 82648 and date 240818"
+    @io_manager.stubs(:output_path).returns('encrypted.txt')
+
+    assert_equal expected, @io_manager.summary(results)
   end
 end

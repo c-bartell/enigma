@@ -1,5 +1,6 @@
 require './lib/crypt_manager'
 require './lib/shift_generator'
+require './lib/io_manager'
 
 class Enigma
   attr_reader :crypt_manager, :shift_generator
