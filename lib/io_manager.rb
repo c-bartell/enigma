@@ -8,4 +8,8 @@ class IOManager
   def input_path
     ARGV[0]
   end
+
+  def output_path
+    ARGV[1]
+  end
 end
