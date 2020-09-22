@@ -74,6 +74,7 @@ class EnigmaTest < Minitest::Test
     io_manager = enigma.io_manager
     enigma.stubs(:key_date).returns(['02715', '040895'])
     write_to_fixture(path_in, 'hello world')
+    $stdout.stubs(:puts).returns('It called puts.')
     enigma.encrypt_file
     io_manager.stubs(:input_path).returns(path_out)
     expected = 'keder ohulw'
@@ -91,6 +92,7 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
     io_manager = enigma.io_manager
     write_to_fixture(path_in, 'keder ohulw')
+    $stdout.stubs(:puts).returns('It called puts.')
     enigma.decrypt_file
     io_manager.stubs(:input_path).returns(path_out)
     expected = 'hello world'
