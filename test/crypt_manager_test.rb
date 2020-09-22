@@ -9,6 +9,10 @@ class CryptManagerTest < Minitest::Test
     @crypt_manager = CryptManager.new(@enigma)
   end
 
+  def test_it_exists
+    assert_instance_of CryptManager, @crypt_manager
+  end
+
   def test_it_has_attributes
     assert_equal @enigma, @crypt_manager.enigma
     assert_equal @cipher, @crypt_manager.cipher
