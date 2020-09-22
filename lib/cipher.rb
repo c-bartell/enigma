@@ -66,6 +66,11 @@ class Cipher
     end
   end
 
+  def return_reset(value)
+    clear_shifts
+    value
+  end
+  
   def encrypt(message, key_date_data)
     update_shifts(key_date_data)
     encrypted = encrypterate(message)

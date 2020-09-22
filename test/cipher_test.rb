@@ -116,7 +116,7 @@ class CipherTest < Minitest::Test
     shifts = { A: 3, B: 27, C: 73, D: 20 }
     @cipher.assign_shifts(shifts)
 
-    assert_equal 'input', cipher.return_reset('input')
+    assert_equal 'input', @cipher.return_reset('input')
     assert_nil @cipher.a_shift
     assert_nil @cipher.b_shift
     assert_nil @cipher.c_shift
