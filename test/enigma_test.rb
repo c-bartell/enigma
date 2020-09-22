@@ -59,4 +59,28 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, enigma.decrypt(ciphertext, key, date)
   end
+
+  def write_to_fixture(path, content)
+    File.open(path, 'w') do |file|
+      file.write(content)
+    end
+  end
+
+  def test_it_can_encrypt_a_file
+    path_in = './test/message_fixture.txt'
+    path_out = './test/encrypted_fixture.txt'
+    ARGV.replace([path_in, path_out])
+    enigma = Enigma.new
+    io_manager = enigma.io_manager
+    enigma.stubs(:key_date).returns(['02715', '040895'])
+    write_to_fixture(path_in, 'hello world')
+    enigma.encrypt_file
+    io_manager.stubs(:input_path).returns(path_out)
+    expected = 'keder ohulw'
+    actual = io_manager.get_text
+    write_to_fixture(path_in, '')
+    write_to_fixture(path_out, '')
+
+    assert_equal expected, actual
+  end
 end
