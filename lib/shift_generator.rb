@@ -61,7 +61,7 @@ class ShiftGenerator
   end
 
   def process(date)
-    (date.to_i ** 2).to_s[-4, 4]
+    (date.to_i**2).to_s[-4, 4]
   end
 
   def offsets(date)

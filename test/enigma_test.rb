@@ -124,7 +124,7 @@ class EnigmaTest < Minitest::Test
   def test_it_can_decrypt_a_file
     path_out = './test/message_fixture.txt'
     path_in = './test/encrypted_fixture.txt'
-    ARGV.replace([path_in, path_out, '02715','040895'])
+    ARGV.replace([path_in, path_out, '02715', '040895'])
     enigma = Enigma.new
     io_manager = enigma.io_manager
     write_to_fixture(path_in, 'keder ohulw')
