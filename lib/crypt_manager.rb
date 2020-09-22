@@ -29,6 +29,10 @@ class CryptManager
     cipher.encrypt(format(message), key_date_data)
   end
 
+  def decrypt_message(ciphertext, key_date_data)
+    cipher.decrypt(format(ciphertext), key_date_data)
+  end
+
   def encrypt(message, key_date_data)
     package(encrypt_message(message, key_date_data), key_date_data)
   end
