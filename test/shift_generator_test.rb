@@ -7,6 +7,10 @@ class ShiftGeneratorTest < Minitest::Test
     @shift_generator = ShiftGenerator.new(@enigma)
   end
 
+  def test_it_exists
+    assert_instance_of ShiftGenerator, @shift_generator
+  end
+
   def test_it_has_attributes
     assert_equal @enigma, @shift_generator.enigma
   end
