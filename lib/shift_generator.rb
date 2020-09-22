@@ -1,3 +1,5 @@
+require 'date'
+
 class ShiftGenerator
   attr_reader :enigma
 
